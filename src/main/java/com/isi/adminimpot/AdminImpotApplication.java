@@ -14,12 +14,15 @@ public class AdminImpotApplication {
 		SpringApplication.run(AdminImpotApplication.class, args);
 	}
 
+
 	@Bean
 	CommandLineRunner commandLineRunner(DeclarantDao declarantDao){
 		return args -> {
-			declarantDao.save(new Declarant(null, "Diagnostic", "Dakar", "diallo@test.com", "77777777"));
+			declarantDao.save(new Declarant(null, "Test", "Dakarrrr", "bah@test.com", "77777777"));
+			declarantDao.save(new Declarant(null, "Test2", "Pita", "test@test.com", "77777777"));
+			declarantDao.save(new Declarant(null, "Test3", "Guinea", "gn@test.com", "77777777"));
 			declarantDao.findAll().forEach(p->{
-				System.out.println(p.getRaisonSocial());
+				System.out.println(p.getEmail());
 			});
 		};
 	}
