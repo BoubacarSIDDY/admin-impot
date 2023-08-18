@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,4 +20,6 @@ public class Declarant {
     private String email;
     private String telephone;
 
+    @OneToMany(mappedBy = "declarant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Declaration> declarations;
 }

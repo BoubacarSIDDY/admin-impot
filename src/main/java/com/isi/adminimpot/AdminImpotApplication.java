@@ -1,6 +1,6 @@
 package com.isi.adminimpot;
 
-import com.isi.adminimpot.dao.DeclarantDao;
+import com.isi.adminimpot.repositories.DeclarantRepository;
 import com.isi.adminimpot.entities.Declarant;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +16,12 @@ public class AdminImpotApplication {
 
 
 	@Bean
-	CommandLineRunner commandLineRunner(DeclarantDao declarantDao){
+	CommandLineRunner commandLineRunner(DeclarantRepository declarantRepository){
 		return args -> {
-			declarantDao.save(new Declarant(null, "Test", "Dakarrrr", "bah@test.com", "77777777"));
-			declarantDao.save(new Declarant(null, "Test2", "Pita", "test@test.com", "77777777"));
-			declarantDao.save(new Declarant(null, "Test3", "Guinea", "gn@test.com", "77777777"));
-			declarantDao.findAll().forEach(p->{
+			declarantRepository.save(new Declarant(null, "Test", "Dakarrrr", "bah@test.com", "77777777"));
+			declarantRepository.save(new Declarant(null, "Test2", "Pita", "test@test.com", "77777777"));
+			declarantRepository.save(new Declarant(null, "Test3", "Guinea", "gn@test.com", "77777777"));
+			declarantRepository.findAll().forEach(p->{
 				System.out.println(p.getEmail());
 			});
 		};

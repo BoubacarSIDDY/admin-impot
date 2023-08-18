@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,5 +19,10 @@ public class Declaration {
     @Temporal(TemporalType.DATE)
     private Date dateDeclaration;
     private double montantDeclaration;
-    private Long idDeclarant;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_declarant")
+    private Declarant declarant;
+
+    @OneToMany(mappedBy = "declaration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Paiement> paiements;
 }

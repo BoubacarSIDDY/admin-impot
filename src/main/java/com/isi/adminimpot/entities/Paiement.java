@@ -18,5 +18,8 @@ public class Paiement {
     @Temporal(TemporalType.DATE)
     private Date datePaiement;
     private double montantPaiement;
-    private Long idDeclaration;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_declaration")
+    private Declaration declaration;
+
 }
