@@ -27,11 +27,15 @@
                     <td th:text="${p.email}"></td>
                     <td th:text="${p.adresse}"></td>
                     <td th:text="${p.telephone}"></td>
+                    <td>
+                        <a th:href="@{delete(id=${p.id})}" onclick="return confirm('Etes vous sure ?')" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
 </body>
 </html>

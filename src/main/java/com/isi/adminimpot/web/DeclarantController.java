@@ -20,4 +20,15 @@ public class DeclarantController {
         model.addAttribute("listDeclarants", declarants);
         return "declarants";
     }
+
+    @GetMapping("/delete")
+    public String delete(Long id){
+        declarantDao.deleteById(id);
+        return "redirect:/index";
+    }
+
+    @GetMapping("/")
+    public String home(){
+        return "redirect:/index";
+    }
 }
