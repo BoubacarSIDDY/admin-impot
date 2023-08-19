@@ -1,6 +1,6 @@
 package com.isi.adminimpot.web;
 
-import com.isi.adminimpot.repositories.DeclarantRepository;
+import com.isi.adminimpot.repositories.IDeclarantRepository;
 import com.isi.adminimpot.entities.Declarant;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,18 +12,18 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class DeclarantController {
-    private DeclarantRepository declarantRepository;
+    private IDeclarantRepository IDeclarantRepository;
 
     @GetMapping(path = "/index")
     public String declarants(Model model){
-        List<Declarant> declarants = declarantRepository.findAll();
+        List<Declarant> declarants = IDeclarantRepository.findAll();
         model.addAttribute("listDeclarants", declarants);
         return "declarants/liste";
     }
 
     @GetMapping("/delete")
     public String delete(Long id){
-        declarantRepository.deleteById(id);
+        IDeclarantRepository.deleteById(id);
         return "redirect:/index";
     }
 

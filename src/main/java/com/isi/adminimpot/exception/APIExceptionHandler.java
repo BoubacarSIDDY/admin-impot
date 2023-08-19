@@ -1,5 +1,6 @@
 package com.isi.adminimpot.exception;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,4 +15,11 @@ public class APIExceptionHandler {
         APIException exception = new APIException(e.getMessage(), e.getStatus(), LocalDateTime.now());
         return new ResponseEntity<>(exception, e.getStatus());
     }
+
+    @ExceptionHandler(value = EntityNotFoundException.class)
+    public ResponseEntity<APIException> handlerRequestionException(EntityNotFoundException e){
+        APIException exception = new APIException(e.getMessage(), HttpStatus.NOT_FOUND, LocalDateTime.now());
+        return new ResponseEntity<>(exception,HttpStatus.NOT_FOUND);
+    }
+
 }
