@@ -16,5 +16,5 @@ public class PaiementDto {
     private Date datePaiement;
     @NotNull(message = "le montant de paiement ne doit pas être null")
     private double montantPaiement;
-
+    private Long declarationId;
 }

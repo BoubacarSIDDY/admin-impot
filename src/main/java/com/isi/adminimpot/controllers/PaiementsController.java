@@ -3,6 +3,7 @@ package com.isi.adminimpot.controllers;
 import com.isi.adminimpot.dto.PaiementDto;
 import com.isi.adminimpot.service.PaiementService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,23 +13,23 @@ import java.util.List;
  * API REST (Paiements)
  */
 @RestController
-@RequestMapping("/api/paiements")
-@AllArgsConstructor
+@RequestMapping("/paiement")
+@AllArgsConstructor @NoArgsConstructor
 public class PaiementsController {
 
     private PaiementService paiementService;
 
-    @PostMapping
+    @PostMapping("/addPaiement")
     public PaiementDto addPaiement(@Valid @RequestBody PaiementDto paiementDto){
         return paiementService.createPaiement(paiementDto);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/paiements")
     public List<PaiementDto> getAllPaiement(){
         return paiementService.getPaiements();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/getPaiement/{id}")
     public PaiementDto getDeclaration(@PathVariable("id") int id){
         return paiementService.getPaiement(id);
     }

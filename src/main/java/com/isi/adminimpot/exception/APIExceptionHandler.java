@@ -12,8 +12,8 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(value = {RequestException.class})
     public ResponseEntity<APIException> handleRequestException(RequestException e){
-        APIException exception = new APIException(e.getMessage(), e.getStatus(), LocalDateTime.now());
-        return new ResponseEntity<>(exception, e.getStatus());
+        APIException exception = new APIException(e.getMessage(), HttpStatus.NOT_FOUND, LocalDateTime.now());
+        return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = EntityNotFoundException.class)

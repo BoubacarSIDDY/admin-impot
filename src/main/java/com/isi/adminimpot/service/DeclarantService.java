@@ -1,7 +1,7 @@
 package com.isi.adminimpot.service;
 
 import com.isi.adminimpot.dto.DeclarantDto;
-import com.isi.adminimpot.exception.RequestException;
+import com.isi.adminimpot.exception.*;
 import com.isi.adminimpot.mapping.DeclarantMapper;
 import com.isi.adminimpot.repositories.IDeclarantRepository;
 import org.springframework.context.MessageSource;
@@ -34,7 +34,7 @@ public class DeclarantService {
     @Transactional(readOnly = true)
     public DeclarantDto getDeclarant(int id){
         return declarantMapper.toDeclarantDto(iDeclarantRepository.findById((long) id)
-                .orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("declaration.notfound", new Object[]{id}, Locale.getDefault()))));
+                .orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("declarant.notfound", new Object[]{id}, Locale.getDefault()))));
     }
 
     @Transactional
@@ -45,7 +45,7 @@ public class DeclarantService {
     @Transactional
     public DeclarantDto updateDeclarant(int id, DeclarantDto declarantDto){
         return iDeclarantRepository.findById((long) id).map(entity -> {
-            declarantDto.setId(id);
+            declarantDto.setId((long)id);
             return declarantMapper.toDeclarantDto(iDeclarantRepository.save(declarantMapper.fromDeclarant(declarantDto)));
         }).orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("declaration.notfound", new Object[]{id}, Locale.getDefault())));
     }

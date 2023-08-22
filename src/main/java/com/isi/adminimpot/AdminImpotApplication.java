@@ -14,7 +14,7 @@ public class AdminImpotApplication {
 		SpringApplication.run(AdminImpotApplication.class, args);
 	}
 
-
+	/**
 	@Bean
 	CommandLineRunner commandLineRunner(IDeclarantRepository IDeclarantRepository){
 		return args -> {
@@ -26,5 +26,6 @@ public class AdminImpotApplication {
 			});
 		};
 	}
+	**/
 
 }

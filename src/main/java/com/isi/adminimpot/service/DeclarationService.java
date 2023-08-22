@@ -1,6 +1,7 @@
 package com.isi.adminimpot.service;
 
 import com.isi.adminimpot.dto.DeclarationDto;
+import com.isi.adminimpot.exception.EntityNotFoundException;
 import com.isi.adminimpot.exception.RequestException;
 import com.isi.adminimpot.mapping.DeclarationMapper;
 import com.isi.adminimpot.repositories.IDeclarationRepository;
@@ -8,8 +9,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.isi.adminimpot.exception;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -45,13 +44,13 @@ public class DeclarationService {
 
     @Transactional
     public DeclarationDto createDeclaration(DeclarationDto declarationDto){
-        return DeclarationMapper.toDeclarationDto(iDeclarationRepository.save(declarationMapper.fromDeclaration(declarationDto)));
+        return declarationMapper.toDeclarationDto(iDeclarationRepository.save(declarationMapper.fromDeclaration(declarationDto)));
     }
 
     @Transactional
     public DeclarationDto updateDeclaration(int id, DeclarationDto declarationDto){
         return iDeclarationRepository.findById((long) id).map(entity -> {
-            declarationDto.setId(id);
+            declarationDto.setId((long)id);
             return declarationMapper.toDeclarationDto(iDeclarationRepository.save(declarationMapper.fromDeclaration(declarationDto)));
         }).orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("declaration.notfound", new Object[]{id}, Locale.getDefault())));
     }
