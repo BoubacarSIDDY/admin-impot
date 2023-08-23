@@ -4,9 +4,9 @@ Examen de Java Master 1, système de régularisation des impôts pour les contri
 La structure du projet est comme suit:
 
 #### `com.isi.config` : 
-est le package qui contient la configuration de l'application à savoir les messages sources et l'alphabetisation
+est le package qui contient la configuration de l'application à savoir les messages sources et l'encodage des caractères en UTF-8
 #### `com.isi.controllers` : 
-est le package qui contient les rest controllers 
+est le package qui contient les rest API controllers 
 #### `com.isi.entities` : 
 est le package qui contient les entités JPA pour les tables au niveau de la base de données:
 1. Declarant
@@ -32,16 +32,32 @@ est le package qui contient le métier, disons les traitements spécifiques ou l
 ## Les captures d'écrans (test avec Postman)
 ### `DECLARANT`:
 - Ajout déclarant
-  
+  ![newDeclarant](src/main/resources/captures/1.jpeg)
 - Récuperation d'un déclarant
+  ![getDeclarant](src/main/resources/captures/2.jpeg)
+- Récuperation d'un déclarant avec un id qui n'existe pas pour simuler une **erreur**
+  ![errorDeclarant](src/main/resources/captures/5.jpeg)
 - Liste déclarants
-
+  ![listeDeclarants](src/main/resources/captures/4.jpeg)
 ### `DECLARATION`:
 - Ajout d'une déclaration
+  ![newDeclaration](src/main/resources/captures/6_declaration.jpeg)
 - Récuperation d'une déclaration
+  ![getDeclaration](src/main/resources/captures/8_declaration.jpeg)
+- Récuperation d'une déclaration avec un id qui n'existe pas pour simuler une **erreur**
+  ![getDeclarationNotExist](src/main/resources/captures/7_declaration.jpeg)
 - Liste déclarations
+  ![listDeclarations](src/main/resources/captures/9_declaration.jpeg)
 
 ### `PAIEMENT`:
-- Ajout d'un paiement d'une déclaration
-- Simulation d'une erreur de dépassement du montant de déclaration à payer
+- Ajout d'un paiement d'une déclaration qui dépasse le montant de la déclaration (**Simulation erreur**)  : la déclaration 600 000 et on essaye de payer 800 000
+  ![newPaiement](src/main/resources/captures/10_paiement.jpeg)
+  ![newPaiement](src/main/resources/captures/11_paiement.jpeg)
+- Paiement de 500 000 sur la déclaration 8 dont le montant est 600 000
+  ![newPaiement](src/main/resources/captures/12_paiement.jpeg)
+- Récupération du paiement
+  ![newPaiement](src/main/resources/captures/15_paiement.jpeg)
 - Liste des paiements
+  ![newPaiement](src/main/resources/captures/14_paiements.jpeg)
+
+**POUR PLUS D'INFORMATION, NOUS VOUS DEMANDONS DE PARCOURIR LE CODE SOURCE !!!**
