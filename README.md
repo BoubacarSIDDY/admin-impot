@@ -8,7 +8,7 @@ est le package qui contient la configuration de l'application à savoir les mess
 #### `com.isi.controllers` : 
 est le package qui contient les rest API controllers 
 #### `com.isi.entities` : 
-est le package qui contient les entités JPA pour les tables au niveau de la base de données:
+est le package qui contient les entités JPA qui correspondront aux différents tables qui seront créées au niveau de la base de données:
 1. Declarant
 2. Declaration
 3. Paiement
